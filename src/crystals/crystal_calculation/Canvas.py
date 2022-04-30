@@ -1,3 +1,7 @@
+import numpy as np
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from crystal_calculation.Crystal import Crystal
 class Canvas:
     def __init__(self, crystal: "Crystal", radius: int):
         start = crystal.inject_circle()
