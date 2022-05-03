@@ -12,7 +12,7 @@ def plot_crystal(rseq, average_area, grad, std, intercept, CI):
     plt.ylabel("Log(Number of Occupied Sites)")
     # Performs a linear regression on the middle section of the graph
     CIlower = grad - 2.58 * std
-    CIhigher = grad + 2.58 * std
+    CIhigher = grad + 2.58 * stdw
     CI = (CIlower, CIhigher)
     logging.info(f"Confidence interval: {CI}")
 
