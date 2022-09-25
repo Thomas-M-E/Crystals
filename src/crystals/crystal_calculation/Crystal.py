@@ -1,9 +1,14 @@
-import numpy as np
 import random
 from typing import Tuple
+
+import numpy as np
+
+
 class Crystal:
-    """ Class for a crystal and it's growth
     """
+    Class for a crystal and it's growth
+    """
+
     def __init__(self):
         self.pixels = 255
         self.mid_point = int((self.pixels - 1) / 2)
@@ -15,15 +20,17 @@ class Crystal:
         """This injects particles inwards from a circle"""
         theta = random.random() * 2 * np.pi
         r = self.inject_radius
-        x, y = (r*np.cos(theta) + self.mid_point, r*np.sin(theta) + self.mid_point)
+        x, y = (r * np.cos(theta) + self.mid_point, r * np.sin(theta) + self.mid_point)
         # return integers as they have to be on the pixel grid
         return int(x), int(y)
 
-    def update_radius(self):
-        """ Updates the radius of the injection and kill circles if the
-            crystal is getting too close to them"""
+    def update_radius(self) -> int:
+        """
+        Updates the radius of the injection and kill circles if the
+        crystal is getting too close to them
+        """
         return int(np.ceil(self.inject_radius + 2))
 
     @staticmethod
-    def norm(x, y): 
-        return np.sqrt(x**2 + y**2)
+    def norm(x, y) -> float:
+        return np.sqrt(x ** 2 + y ** 2)
