@@ -2,13 +2,13 @@ from dataclasses import dataclass
 import numpy as np
 import random
 from typing import Tuple
-import logzero
+from logzero import logger
 
-LOGGER = logzero()
+LOGGER = logger
 
 class InjectionCircle:
     def __init__(self, inject_radius: int, origin: Tuple[int, int]):
-        self.inject_radius = inject_radius
+        self.inject_radius = abs(inject_radius)
         self.origin = origin
 
     def inject_particle(self) -> Tuple[int, int]:
@@ -36,3 +36,8 @@ class InjectionCircle:
 class Canvas:
     pixels: int
     canvas: 'np.array'
+    origin: Tuple[int, int]
+
+    def calc_crystal_radius(self, pos: Tuple[int, int]):
+        size = np.sqrt((pos[0] - self.origin)**2 + (pos[1] - self.origin)**2)
+        
